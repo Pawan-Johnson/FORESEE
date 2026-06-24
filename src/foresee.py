@@ -2449,7 +2449,14 @@ class Foresee(Utility, Decay):
 
         # extract line
         cs = plt.contour (m,c,n, levels=[np.log10(nevents)])
-        p = cs.collections[0].get_paths()[icontour]
+        if hasattr(cs, "collections"):
+            # Older API
+            paths = cs.collections[0].get_paths()
+        else:
+            # Newer API
+            paths = cs.get_paths()
+        p = paths[icontour]
+        # p = cs.collections[0].get_paths()[icontour]
         v = p.vertices
         xvals, yvals = v[:,0], v[:,1]
         plt.close()

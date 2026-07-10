@@ -2455,6 +2455,7 @@ class Foresee(Utility, Decay):
         else:
             # Newer API
             paths = cs.get_paths()
+
         p = paths[icontour]
         # p = cs.collections[0].get_paths()[icontour]
         v = p.vertices
